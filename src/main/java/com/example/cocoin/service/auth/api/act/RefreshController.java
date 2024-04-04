@@ -1,0 +1,30 @@
+package com.example.cocoin.service.auth.api.act;
+
+import com.example.cocoin.service.auth.api.biz.RefreshService;
+import com.example.cocoin.service.auth.api.dto.TokenDTO;
+import com.example.cocoin.common.base.dto.ResponseDataDTO;
+import com.example.cocoin.common.base.vo.Code;
+import com.example.cocoin.common.exception.GeneralException;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@Slf4j
+@RestController
+@RequiredArgsConstructor
+@RequestMapping(value = {"/api/auth"})
+public class RefreshController {
+    private final RefreshService refreshService;
+    @PostMapping("/ctf/refresh")
+    public ResponseDataDTO<TokenDTO> refresh(@CookieValue(name = "RefreshToken", required = false) String refreshToken) {
+        if (refreshToken == null) {
+            throw new GeneralException(Code.TOKEN_ILLEGAL_ARGUMENT);
+        }
+        TokenDTO tokenDTO = refreshService.refresh(refreshToken);
+//        CookieUtils.createCookie("RefreshToken", JwtHeaderUtilEnums.GRANT_TYPE.getValue() + tokenDTO.getRefreshToken(), JwtExpirationEnums.REFRESH_TOKEN_EXPIRATION_TIME.getValue().intValue());
+        return ResponseDataDTO.of(tokenDTO);
+    }
+}

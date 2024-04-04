@@ -1,0 +1,45 @@
+package com.example.cocoin.service.auth.api.act;
+
+import com.example.cocoin.service.auth.api.biz.AuthService;
+import com.example.cocoin.common.base.dto.ResponseDataDTO;
+import com.example.cocoin.common.base.dto.ResponseDTO;
+import com.example.cocoin.common.base.vo.Code;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@Slf4j
+@RestController
+@RequiredArgsConstructor
+@RequestMapping(value = {"/api/auth"})
+public class AuthController {
+
+    private final AuthService authService;
+
+//    @GetMapping("/ctf/user/{userEmail}")
+//    public UserVO getUserInfo(@PathVariable(name = "userEmail") String userEmail) {
+//        return userService.getUserInfo(userEmail);
+//    }
+
+    @GetMapping("/check")
+    public ResponseDTO getCheck() {
+        return ResponseDTO.of(true, Code.OK);
+    }
+
+    @GetMapping("/userInfo")
+    public ResponseDataDTO getUserInfo(UserDetails userDetails) {
+        return ResponseDataDTO.of(authService.getUserInfo(userDetails));
+//        UserDTO userDTO = UserDTO.of(userEntity);
+//        return ResponseDataDTO.of(userDTO);
+    }
+
+    @GetMapping("/getUserEmail")
+    public String getUserEmail(Authentication authentication) {
+        return authentication.getName();
+    }
+
+}
