@@ -75,76 +75,7 @@ public class UserEntity extends CommonDateEntity {
         this.walletEntity = walletEntity;
     }
 
-    public static UserEntity ofUser(JoinParamDTO joinParamDTO) {
-        UserEntity userEntity = null;
-        HttpServletRequest request = HttpUtils.getRequest();
-        try {
-            userEntity = UserEntity.builder()
-                    .email(joinParamDTO.getUserEmail())
-                    .password(joinParamDTO.getUserPassword())
-                    .name(joinParamDTO.getUserName())
-                    .phone(joinParamDTO.getUserPhone())
-                    .nick(joinParamDTO.getUserNick())
-//                    .ip(Inet4Address.getLocalHost().getHostAddress())
-                    .ip(RequestUtils.getClientIP())
-//                    .block("N")
-                    .build();
-            userEntity.setWalletEntity(WalletEntity.builder().point(Long.valueOf(10000)).userEntity(userEntity).build());
-            userEntity.addAuth(AuthEntity.ofUser(userEntity));
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new RuntimeException(e);
-        }
-
-        return userEntity;
-    }
-
-    public static UserEntity ofSocial(JoinParamDTO joinParamDTO) {
-        UserEntity userEntity = null;
-        HttpServletRequest request = HttpUtils.getRequest();
-        try {
-            userEntity = UserEntity.builder()
-                    .email(joinParamDTO.getUserEmail())
-                    .password(joinParamDTO.getUserPassword())
-                    .name(joinParamDTO.getUserName())
-                    .phone(joinParamDTO.getUserPhone())
-                    .nick(joinParamDTO.getUserNick())
-//                    .ip(Inet4Address.getLocalHost().getHostAddress())
-                    .ip(RequestUtils.getClientIP())
-//                    .block("N")
-                    .build();
-            userEntity.setWalletEntity(WalletEntity.builder().point(Long.valueOf(10000)).userEntity(userEntity).build());
-            userEntity.addAuth(AuthEntity.ofUser(userEntity));
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new RuntimeException(e);
-        }
-
-        return userEntity;
-    }
-
-    public static UserEntity ofAdmin(JoinParamDTO joinParamDTO) {
-        UserEntity userEntity = null;
-        try {
-            userEntity = UserEntity.builder()
-                    .email(joinParamDTO.getUserEmail())
-                    .password(joinParamDTO.getUserPassword())
-                    .name(joinParamDTO.getUserName())
-                    .phone(joinParamDTO.getUserPhone())
-                    .nick(joinParamDTO.getUserNick())
-                    .ip(Inet4Address.getLocalHost().getHostAddress())
-//                    .block("N")
-                    .build();
-        } catch (UnknownHostException e) {
-            e.printStackTrace();
-            throw new RuntimeException(e);
-        }
-        userEntity.setWalletEntity(WalletEntity.builder().point(Long.valueOf(10000)).userEntity(userEntity).build());
-        userEntity.addAuth(AuthEntity.ofAdmin(userEntity));
-        return userEntity;
-    }
-
-    private void addAuth(AuthEntity userAuthEntity) {
+    public void addAuth(AuthEntity userAuthEntity) {
         role.add(userAuthEntity);
     }
 

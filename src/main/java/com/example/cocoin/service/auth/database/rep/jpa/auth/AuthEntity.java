@@ -26,20 +26,6 @@ public class AuthEntity implements GrantedAuthority {
     @JoinColumn(name = "user_id", nullable = false)
     private UserEntity userEntity;
 
-    public static AuthEntity ofUser(UserEntity userEntity) {
-        return AuthEntity.builder()
-                .role("ROLE_USER")
-                .userEntity(userEntity)
-                .build();
-    }
-
-    public static AuthEntity ofAdmin(UserEntity userEntity) {
-        return AuthEntity.builder()
-                .role("ROLE_ADMIN")
-                .userEntity(userEntity)
-                .build();
-    }
-
     @Override
     public String getAuthority() {
         return role;

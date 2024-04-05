@@ -1,8 +1,11 @@
 package com.example.cocoin.service.auth.api.biz;
 
+import com.example.cocoin.common.utils.RequestUtils;
 import com.example.cocoin.service.auth.api.dto.JoinParamDTO;
+import com.example.cocoin.service.auth.database.rep.jpa.auth.AuthEntity;
 import com.example.cocoin.service.auth.database.rep.jpa.user.UserEntity;
 import com.example.cocoin.service.auth.database.rep.jpa.user.UserRepository;
+import com.example.cocoin.service.auth.database.rep.jpa.wallet.WalletEntity;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -10,6 +13,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
+
+import java.net.Inet4Address;
 
 
 @Slf4j
@@ -23,32 +28,96 @@ public class JoinService {
     @Transactional
     public void joinUser(JoinParamDTO joinParamDTO) {
         joinParamDTO.setUserPassword(passwordEncoder.encode(joinParamDTO.getUserPassword()));
-        userRepository.save(UserEntity.ofUser(joinParamDTO));
+        UserEntity userEntity = UserEntity.builder()
+                .email(joinParamDTO.getUserEmail())
+                .password(joinParamDTO.getUserPassword())
+                .name(joinParamDTO.getUserName())
+                .phone(joinParamDTO.getUserPhone())
+                .nick(joinParamDTO.getUserNick())
+//                    .ip(Inet4Address.getLocalHost().getHostAddress())
+                .ip(RequestUtils.getClientIP())
+//                    .block("N")
+                .build();
+        userEntity.setWalletEntity(
+                WalletEntity.builder()
+                        .point(Long.valueOf(10000))
+                        .userEntity(userEntity).build()
+        );
+        userEntity.addAuth(
+                AuthEntity.builder()
+                        .role("ROLE_USER")
+                        .userEntity(userEntity)
+                        .build()
+        );
+        userRepository.save(userEntity);
     }
 
     @Transactional
     public void joinAdmin(JoinParamDTO joinParamDTO) {
         joinParamDTO.setUserPassword(passwordEncoder.encode(joinParamDTO.getUserPassword()));
-        userRepository.save(UserEntity.ofAdmin(joinParamDTO));
+        UserEntity userEntity = UserEntity.builder()
+                .email(joinParamDTO.getUserEmail())
+                .password(joinParamDTO.getUserPassword())
+                .name(joinParamDTO.getUserName())
+                .phone(joinParamDTO.getUserPhone())
+                .nick(joinParamDTO.getUserNick())
+                .ip(RequestUtils.getClientIP())
+//                    .block("N")
+                .build();
+        userEntity.setWalletEntity(
+                WalletEntity.builder()
+                        .point(Long.valueOf(10000))
+                        .userEntity(userEntity)
+                        .build()
+        );
+        userEntity.addAuth(
+                AuthEntity.builder()
+                        .role("ROLE_ADMIN")
+                        .userEntity(userEntity)
+                        .build()
+        );
+        userRepository.save(userEntity);
     }
 
     @Transactional
     public void joinSocial(JoinParamDTO joinParamDTO) {
         joinParamDTO.setUserPassword(passwordEncoder.encode(joinParamDTO.getUserPassword()));
-        userRepository.save(UserEntity.ofSocial(joinParamDTO));
+        UserEntity userEntity = UserEntity.builder()
+                .email(joinParamDTO.getUserEmail())
+                .password(joinParamDTO.getUserPassword())
+                .name(joinParamDTO.getUserName())
+                .phone(joinParamDTO.getUserPhone())
+                .nick(joinParamDTO.getUserNick())
+//                    .ip(Inet4Address.getLocalHost().getHostAddress())
+                .ip(RequestUtils.getClientIP())
+//                    .block("N")
+                .build();
+        userEntity.setWalletEntity(
+                WalletEntity.builder()
+                        .point(Long.valueOf(10000))
+                        .userEntity(userEntity)
+                        .build()
+        );
+        userEntity.addAuth(
+                AuthEntity.builder()
+                        .role("ROLE_USER")
+                        .userEntity(userEntity)
+                        .build()
+        );
+        userRepository.save(userEntity);
     }
 
     public Boolean valid(JoinParamDTO joinParamDTO, BindingResult bindingResult) {
         // loginId 중복 체크
-        if(this.duplEmail(joinParamDTO.getUserEmail())) {
+        if (this.duplEmail(joinParamDTO.getUserEmail())) {
             bindingResult.addError(new FieldError("joinParamDTO", "userEmail", "로그인 아이디가 중복됩니다."));
         }
         // 닉네임 중복 체크
-        if(this.duplNick(joinParamDTO.getUserNick())) {
+        if (this.duplNick(joinParamDTO.getUserNick())) {
             bindingResult.addError(new FieldError("joinParamDTO", "userNick", "닉네임이 중복됩니다."));
         }
         // password와 passwordCheck가 같은지 체크
-        if(!joinParamDTO.getUserPassword().equals(joinParamDTO.getUserPasswordCheck())) {
+        if (!joinParamDTO.getUserPassword().equals(joinParamDTO.getUserPasswordCheck())) {
             bindingResult.addError(new FieldError("joinParamDTO", "userPasswordCheck", "바밀번호가 일치하지 않습니다."));
         }
         return bindingResult.hasErrors();
