@@ -1,4 +1,4 @@
-package com.example.cocoin.common.annotation;
+package com.example.cocoin.log.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

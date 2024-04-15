@@ -1,4 +1,4 @@
-package com.example.cocoin.common.aop;
+package com.example.cocoin.log.aop;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -16,7 +16,7 @@ import org.springframework.util.StopWatch;
 public class TimerAop { // Timer 동작 AOP
 
     // annotation 패키지 하위의 Timer method 는 **로깅하기**  ->  실행 시간이 필요함
-    @Pointcut("@annotation(com.example.cocoin.common.annotation.Timer)")
+    @Pointcut("@annotation(com.example.cocoin.log.annotation.Timer)")
     private void timerPointcut() {
     }
 

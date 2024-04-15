@@ -23,10 +23,10 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-@EnableWebMvc
 @Configuration
-@RequiredArgsConstructor
 @ComponentScan(basePackages = {"com.example.cocoin"})
+@EnableWebMvc
+@RequiredArgsConstructor
 public class MvcConfig implements WebMvcConfigurer {
 
     private final UserEntityResolver userEntityResolver;

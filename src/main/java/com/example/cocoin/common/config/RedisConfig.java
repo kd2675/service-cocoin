@@ -10,7 +10,7 @@ import org.springframework.data.redis.repository.configuration.EnableRedisReposi
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
-@EnableRedisRepositories(basePackages = "com.example.cocoin.auth.database.rep.redis")
+@EnableRedisRepositories(basePackages = "com.example.cocoin.service.auth.database.rep.redis")
 @Configuration
 public class RedisConfig {
     @Value("${spring.data.redis.host}")

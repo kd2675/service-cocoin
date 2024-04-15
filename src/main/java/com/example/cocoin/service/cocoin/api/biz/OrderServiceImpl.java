@@ -3,7 +3,7 @@ package com.example.cocoin.service.cocoin.api.biz;
 import com.example.cocoin.service.auth.database.rep.jpa.user.UserEntity;
 import com.example.cocoin.service.auth.database.rep.jpa.user.UserRepository;
 import com.example.cocoin.service.auth.database.rep.jpa.wallet.WalletEntity;
-import com.example.cocoin.common.annotation.Timer;
+import com.example.cocoin.log.annotation.Timer;
 import com.example.cocoin.common.base.vo.Code;
 import com.example.cocoin.common.exception.GeneralException;
 import com.example.cocoin.log.annotation.Log;
