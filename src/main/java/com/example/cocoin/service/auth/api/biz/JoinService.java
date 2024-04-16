@@ -2,19 +2,17 @@ package com.example.cocoin.service.auth.api.biz;
 
 import com.example.cocoin.common.utils.RequestUtils;
 import com.example.cocoin.service.auth.api.dto.JoinParamDTO;
-import com.example.cocoin.service.auth.database.rep.jpa.auth.AuthEntity;
-import com.example.cocoin.service.auth.database.rep.jpa.user.UserEntity;
 import com.example.cocoin.service.auth.database.rep.jpa.user.UserRepository;
-import com.example.cocoin.service.auth.database.rep.jpa.wallet.WalletEntity;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.example.database.auth.database.rep.jpa.auth.AuthEntity;
+import org.example.database.auth.database.rep.jpa.user.UserEntity;
+import org.example.database.auth.database.rep.jpa.wallet.WalletEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
-
-import java.net.Inet4Address;
 
 
 @Slf4j

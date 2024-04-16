@@ -1,13 +1,12 @@
 package com.example.cocoin.common.config.jwt.provider;
 
-import com.example.cocoin.service.auth.database.rep.redis.logout.LogoutAccessTokenRedisRepository;
-import com.example.cocoin.service.auth.database.rep.redis.refresh.RefreshTokenRedis;
-import com.example.cocoin.service.auth.database.rep.redis.refresh.RefreshTokenRedisRepository;
 import com.example.cocoin.common.base.vo.Code;
 import com.example.cocoin.common.config.jwt.enums.JwtExpirationEnums;
 import com.example.cocoin.common.config.jwt.enums.JwtHeaderUtilEnums;
 import com.example.cocoin.common.exception.GeneralException;
 import com.example.cocoin.common.utils.CookieUtils;
+import com.example.cocoin.service.auth.database.rep.redis.logout.LogoutAccessTokenRedisRepository;
+import com.example.cocoin.service.auth.database.rep.redis.refresh.RefreshTokenRedisRepository;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -15,6 +14,7 @@ import io.jsonwebtoken.security.Keys;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.example.database.auth.database.rep.redis.refresh.RefreshTokenRedis;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;

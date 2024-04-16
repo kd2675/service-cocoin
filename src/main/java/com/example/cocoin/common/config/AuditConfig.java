@@ -11,16 +11,17 @@ import java.util.Optional;
 @Configuration
 @RequiredArgsConstructor
 @EnableJpaAuditing // JPA Auditing 활성화
-public class AuditConfig implements AuditorAware<String> {
-    private final JwtTokenProvider jwtTokenProvider;
+public class AuditConfig {
+//public class AuditConfig implements AuditorAware<String> {
+//    private final JwtTokenProvider jwtTokenProvider;
 
-    @Override
-    public Optional<String> getCurrentAuditor() {
-        try {
-            String currentUserEmail = jwtTokenProvider.getUserEmail();
-            return Optional.of(currentUserEmail);
-        } catch (ClassCastException e) {
-            return Optional.empty();
-        }
-    }
+//    @Override
+//    public Optional<String> getCurrentAuditor() {
+//        try {
+//            String currentUserEmail = jwtTokenProvider.getUserEmail();
+//            return Optional.of(currentUserEmail);
+//        } catch (ClassCastException e) {
+//            return Optional.empty();
+//        }
+//    }
 }

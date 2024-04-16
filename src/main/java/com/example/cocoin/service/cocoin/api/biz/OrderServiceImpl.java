@@ -1,13 +1,8 @@
 package com.example.cocoin.service.cocoin.api.biz;
 
-import com.example.cocoin.service.auth.database.rep.jpa.user.UserEntity;
-import com.example.cocoin.service.auth.database.rep.jpa.user.UserRepository;
-import com.example.cocoin.service.auth.database.rep.jpa.wallet.WalletEntity;
-import com.example.cocoin.log.annotation.Timer;
 import com.example.cocoin.common.base.vo.Code;
 import com.example.cocoin.common.exception.GeneralException;
-import com.example.cocoin.log.annotation.Log;
-import com.example.cocoin.log.annotation.LogOrder;
+import com.example.cocoin.service.auth.database.rep.jpa.user.UserRepository;
 import com.example.cocoin.service.cocoin.api.dto.DelOrderDTO;
 import com.example.cocoin.service.cocoin.api.dto.InsMarketDTO;
 import com.example.cocoin.service.cocoin.api.dto.InsOrderDTO;
@@ -20,8 +15,12 @@ import com.example.cocoin.service.coin.database.rep.jpa.coin.CoinEntity;
 import com.example.cocoin.service.coin.database.rep.jpa.coin.CoinREP;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.example.database.auth.database.rep.jpa.user.UserEntity;
+import org.example.database.auth.database.rep.jpa.wallet.WalletEntity;
+import org.example.log.annotation.Log;
+import org.example.log.annotation.LogOrder;
+import org.example.log.annotation.Timer;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -34,7 +33,6 @@ import java.util.Objects;
 @Slf4j
 public class OrderServiceImpl implements OrderService {
     private final UserRepository userRepository;
-    private final UserDetailsService userDetailsService;
     private final OrderRepository orderRepository;
     private final MarketRepository marketRepository;
 
@@ -42,13 +40,8 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     @Transactional
-    @Log
     @LogOrder
-    @Timer
-    public OrderDTO order(InsOrderDTO insOrderDTO, UserDetails userDetails) {
-        UserEntity userEntity = userRepository.findByEmailWithRole(userDetails.getUsername())
-                .orElseThrow(() -> new GeneralException(Code.NO_SEARCH_USER, "없는 회원입니다."));
-
+    public OrderDTO order(InsOrderDTO insOrderDTO, UserEntity userEntity) {
         if ("b".equals(insOrderDTO.getOrderSlct())) {
             this.orderBuy(insOrderDTO, userEntity);
         } else if ("s".equals(insOrderDTO.getOrderSlct())) {
@@ -92,7 +85,7 @@ public class OrderServiceImpl implements OrderService {
                 Collections.singletonList(insOrderDTO.getCoinSlct()),
                 Collections.singletonList(insOrderDTO.getMarginSlct())
         ).ifPresent(
-                v->{
+                v -> {
                     if (Integer.compare(v.getMargin(), insOrderDTO.getMargin()) != 0) {
                         throw new GeneralException(Code.BAD_REQUEST);
                     }
@@ -136,11 +129,8 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     @Transactional
-    @Log
     @LogOrder
-    public void cancel(DelOrderDTO delOrderDTO, UserDetails userDetails) {
-        UserEntity userEntity = userRepository.findByEmailWithRole(userDetails.getUsername())
-                .orElseThrow(() -> new GeneralException(Code.NO_SEARCH_USER, "없는 회원입니다."));
+    public void cancel(DelOrderDTO delOrderDTO, UserEntity userEntity) {
 
         OrderEntity orderEntity = orderRepository.findByIdIn(
                 Collections.singletonList(
@@ -166,10 +156,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     @Transactional
-    public void marketOrder(InsMarketDTO insMarketDTO, UserDetails userDetails) {
-        UserEntity userEntity = userRepository.findByEmailWithRole(userDetails.getUsername())
-                .orElseThrow(() -> new GeneralException(Code.NO_SEARCH_USER, "없는 회원입니다."));
-
+    public void marketOrder(InsMarketDTO insMarketDTO, UserEntity userEntity) {
         CoinEntity coinEntity = coinREP.findTopByOrderByIdDesc();
         double coinPrice = Double.parseDouble(coinEntity.getClosingPrice());
 

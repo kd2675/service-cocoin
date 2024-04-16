@@ -1,12 +1,12 @@
 package com.example.cocoin.common.config.jwt.biz;
 
-import com.example.cocoin.service.auth.database.rep.jpa.user.UserEntity;
-import com.example.cocoin.service.auth.database.rep.jpa.user.UserRepository;
 import com.example.cocoin.common.base.vo.Code;
 import com.example.cocoin.common.config.jwt.cache.CacheKey;
 import com.example.cocoin.common.config.jwt.vo.CustomUserDetailVO;
 import com.example.cocoin.common.exception.GeneralException;
+import com.example.cocoin.service.auth.database.rep.jpa.user.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.example.database.auth.database.rep.jpa.user.UserEntity;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.annotation.Primary;
 import org.springframework.security.core.userdetails.UserDetails;

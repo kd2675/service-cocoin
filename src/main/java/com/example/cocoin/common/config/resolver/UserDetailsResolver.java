@@ -1,9 +1,9 @@
 package com.example.cocoin.common.config.resolver;
 
 import com.example.cocoin.common.base.vo.Code;
+import com.example.cocoin.common.config.jwt.provider.JwtTokenProvider;
 import com.example.cocoin.common.exception.GeneralException;
 import com.example.cocoin.service.auth.database.rep.jpa.user.UserRepository;
-import com.example.cocoin.common.config.jwt.provider.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.database.auth.database.rep.jpa.user.UserEntity;
@@ -19,29 +19,31 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 @Slf4j
 @RequiredArgsConstructor
 @Component
-public class UserEntityResolver implements HandlerMethodArgumentResolver {
+public class UserDetailsResolver implements HandlerMethodArgumentResolver {
     private final UserDetailsService userDetailsService;
     private final UserRepository userRepository;
     private final JwtTokenProvider jwtTokenProvider;
 
     @Override
     public boolean supportsParameter(MethodParameter parameter) {
-        return parameter.getParameterType().equals(UserEntity.class);
+        return parameter.getParameterType().equals(UserDetails.class);
     }
 
     @Override
     public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer, NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {
-        UserEntity userEntity = new UserEntity();
+//        UserEntity userEntity = new UserEntity();
+        UserDetails userDetails = null;
         String userEmail = jwtTokenProvider.getUserEmail();
         if (userEmail != null) {
-            userEntity = userRepository.findByEmailWithRole(userEmail)
-                    .orElseThrow(() -> new GeneralException(Code.NO_SEARCH_USER, "회원이 없습니다."));
+            userDetails = userDetailsService.loadUserByUsername(userEmail);
+//            userEntity = userRepository.findByEmailWithRole(userEmail)
+//                    .orElseThrow(() -> new GeneralException(Code.NO_SEARCH_USER, "회원이 없습니다."));
 //        if (!userEntity.getUserEmail().equals(jwtTokenProvider.getCurrentUserEmail())) {
 //            if (!userEntity.getEmail().equals(jwtTokenProvider.getUserEmail())) {
 //                throw new GeneralException(Code.VALIDATION_ERROR, "회원 정보가 일치하지 않습니다.");
 //            }
-//        }
         }
-        return userEntity;
+        return userDetails;
+//        return userEntity;
     }
 }

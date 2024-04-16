@@ -6,6 +6,8 @@ import com.example.cocoin.common.base.dto.ResponseDTO;
 import com.example.cocoin.common.base.vo.Code;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.example.database.auth.database.rep.jpa.user.UserDTO;
+import org.example.database.auth.database.rep.jpa.user.UserEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,10 +33,10 @@ public class AuthController {
     }
 
     @GetMapping("/userInfo")
-    public ResponseDataDTO getUserInfo(UserDetails userDetails) {
-        return ResponseDataDTO.of(authService.getUserInfo(userDetails));
-//        UserDTO userDTO = UserDTO.of(userEntity);
-//        return ResponseDataDTO.of(userDTO);
+    public ResponseDataDTO getUserInfo(UserEntity userEntity) {
+//        return ResponseDataDTO.of(authService.getUserInfo(userDetails));
+        UserDTO userDTO = UserDTO.of(userEntity);
+        return ResponseDataDTO.of(userDTO);
     }
 
     @GetMapping("/getUserEmail")

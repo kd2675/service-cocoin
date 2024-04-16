@@ -1,7 +1,5 @@
 package com.example.cocoin.service.cocoin.database.rep.jpa.market;
 
-import com.example.cocoin.service.auth.database.rep.jpa.user.UserEntity;
-import com.example.cocoin.common.database.rep.jpa.CommonDateEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -9,6 +7,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.example.database.auth.database.rep.jpa.user.UserEntity;
+import org.example.database.common.rep.jpa.CommonDateEntity;
 
 @Getter
 @Builder

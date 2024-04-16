@@ -1,7 +1,7 @@
 package com.example.cocoin.service.auth.database;
 
-import com.example.cocoin.common.database.RoutingDataSource;
 import com.zaxxer.hikari.HikariDataSource;
+import org.example.database.common.RoutingDataSource;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -90,7 +90,7 @@ public class PubConfig {
         properties.put("hibernate.use_sql_comments", true);
 
         return builder.dataSource(new LazyConnectionDataSourceProxy(routingDataSource))
-                .packages("com.example.cocoin.service.auth.database.rep.jpa")
+                .packages("org.example.database.auth.database.rep.jpa")
 //                .packages("org.example.database.auth.database.rep.jpa")
                 .properties(properties)
                 .persistenceUnit("pubEntityManager")

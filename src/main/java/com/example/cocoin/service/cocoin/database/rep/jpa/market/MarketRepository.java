@@ -1,6 +1,6 @@
 package com.example.cocoin.service.cocoin.database.rep.jpa.market;
 
-import com.example.cocoin.service.auth.database.rep.jpa.user.UserEntity;
+import org.example.database.auth.database.rep.jpa.user.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.lang.NonNull;
 

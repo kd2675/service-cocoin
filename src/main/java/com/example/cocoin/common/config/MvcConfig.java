@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Configuration
-@ComponentScan(basePackages = {"com.example.cocoin"})
+@ComponentScan(basePackages = {"com.example.cocoin", "org.example.log"})
 @EnableWebMvc
 @RequiredArgsConstructor
 public class MvcConfig implements WebMvcConfigurer {

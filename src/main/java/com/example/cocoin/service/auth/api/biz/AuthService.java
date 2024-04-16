@@ -1,10 +1,10 @@
 package com.example.cocoin.service.auth.api.biz;
 
-import com.example.cocoin.service.auth.database.rep.jpa.user.UserDTO;
-import com.example.cocoin.service.auth.database.rep.jpa.user.UserEntity;
-import com.example.cocoin.service.auth.database.rep.jpa.user.UserRepository;
 import com.example.cocoin.common.config.jwt.provider.JwtTokenProvider;
+import com.example.cocoin.service.auth.database.rep.jpa.user.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.example.database.auth.database.rep.jpa.user.UserDTO;
+import org.example.database.auth.database.rep.jpa.user.UserEntity;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -29,10 +29,10 @@ public class AuthService {
 //                .build();
 //    }
 
-    public UserDTO getUserInfo(UserDetails userDetails) {
-        UserEntity userEntity = userRepository.findByEmailWithRole(userDetails.getUsername())
-                .orElseThrow(() -> new NoSuchElementException("회원이 없습니다."));
-        return UserDTO.of(userEntity);
-    }
+//    public UserDTO getUserInfo(UserDetails userDetails) {
+//        UserEntity userEntity = userRepository.findByEmailWithRole(userDetails.getUsername())
+//                .orElseThrow(() -> new NoSuchElementException("회원이 없습니다."));
+//        return UserDTO.of(userEntity);
+//    }
 
 }

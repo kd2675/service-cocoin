@@ -1,12 +1,11 @@
 package com.example.cocoin.service.coin.database.rep.jpa.coin;
 
-import com.example.cocoin.common.database.rep.jpa.CommonDateEntity;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.example.database.common.rep.jpa.CommonDateEntity;
 import org.hibernate.annotations.DynamicInsert;
 
 @Getter

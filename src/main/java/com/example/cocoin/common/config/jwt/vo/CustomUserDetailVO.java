@@ -1,11 +1,11 @@
 package com.example.cocoin.common.config.jwt.vo;
 
-import com.example.cocoin.service.auth.database.rep.jpa.user.UserEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.example.database.auth.database.rep.jpa.user.UserEntity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

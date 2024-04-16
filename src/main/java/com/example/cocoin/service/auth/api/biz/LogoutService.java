@@ -1,13 +1,13 @@
 package com.example.cocoin.service.auth.api.biz;
 
-import com.example.cocoin.service.auth.api.dto.TokenDTO;
-import com.example.cocoin.service.auth.database.rep.redis.logout.LogoutAccessTokenRedis;
-import com.example.cocoin.service.auth.database.rep.redis.logout.LogoutAccessTokenRedisRepository;
-import com.example.cocoin.service.auth.database.rep.redis.refresh.RefreshTokenRedisRepository;
 import com.example.cocoin.common.config.jwt.cache.CacheKey;
 import com.example.cocoin.common.config.jwt.provider.JwtTokenProvider;
+import com.example.cocoin.service.auth.api.dto.TokenDTO;
+import com.example.cocoin.service.auth.database.rep.redis.logout.LogoutAccessTokenRedisRepository;
+import com.example.cocoin.service.auth.database.rep.redis.refresh.RefreshTokenRedisRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.example.database.auth.database.rep.redis.logout.LogoutAccessTokenRedis;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

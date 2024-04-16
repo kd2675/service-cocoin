@@ -1,5 +1,6 @@
 package com.example.cocoin.service.auth.database.rep.redis.user;
 
+import org.example.database.auth.database.rep.redis.user.UserRedisEntity;
 import org.springframework.data.keyvalue.repository.KeyValueRepository;
 
 

@@ -1,14 +1,14 @@
 package com.example.cocoin.service.auth.api.biz;
 
-import com.example.cocoin.service.auth.api.dto.TokenDTO;
-import com.example.cocoin.service.auth.database.rep.redis.refresh.RefreshTokenRedis;
-import com.example.cocoin.service.auth.database.rep.redis.refresh.RefreshTokenRedisRepository;
 import com.example.cocoin.common.base.vo.Code;
 import com.example.cocoin.common.config.jwt.enums.JwtExpirationEnums;
 import com.example.cocoin.common.config.jwt.provider.JwtTokenProvider;
 import com.example.cocoin.common.exception.GeneralException;
 import com.example.cocoin.common.utils.CookieUtils;
+import com.example.cocoin.service.auth.api.dto.TokenDTO;
+import com.example.cocoin.service.auth.database.rep.redis.refresh.RefreshTokenRedisRepository;
 import lombok.RequiredArgsConstructor;
+import org.example.database.auth.database.rep.redis.refresh.RefreshTokenRedis;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

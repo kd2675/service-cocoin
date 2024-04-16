@@ -6,6 +6,7 @@ import lombok.*;
 
 @ToString
 @Getter
+@Setter
 @RequiredArgsConstructor
 @AllArgsConstructor
 public class InsOrderDTO {
