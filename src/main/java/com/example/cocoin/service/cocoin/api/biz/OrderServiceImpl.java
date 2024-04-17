@@ -99,10 +99,10 @@ public class OrderServiceImpl implements OrderService {
             throw new GeneralException(Code.NOT_ENOUGH_POINT);
         }
 
-        WalletEntity walletEntity = userEntity.getWalletEntity();
-        walletEntity.buy(fullPrice);
-        userEntity.setWalletEntity(walletEntity);
-        userRepository.save(userEntity);
+//        WalletEntity walletEntity = userEntity.getWalletEntity();
+//        walletEntity.buy(fullPrice);
+//        userEntity.setWalletEntity(walletEntity);
+//        userRepository.save(userEntity);
     }
 
     private void orderSell(InsOrderDTO insOrderDTO, UserEntity userEntity) {
@@ -148,10 +148,10 @@ public class OrderServiceImpl implements OrderService {
 
         double fullPrice = orderEntity.getPrice() * orderEntity.getCnt();
 
-        WalletEntity walletEntity = userEntity.getWalletEntity();
-        walletEntity.sell(fullPrice);
-        userEntity.setWalletEntity(walletEntity);
-        userRepository.save(userEntity);
+//        WalletEntity walletEntity = userEntity.getWalletEntity();
+//        walletEntity.sell(fullPrice);
+//        userEntity.setWalletEntity(walletEntity);
+//        userRepository.save(userEntity);
     }
 
     @Override
