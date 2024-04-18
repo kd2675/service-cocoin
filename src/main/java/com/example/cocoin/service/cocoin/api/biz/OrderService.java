@@ -10,5 +10,5 @@ import org.springframework.security.core.userdetails.UserDetails;
 public interface OrderService {
     OrderDTO order(InsOrderDTO insOrderDTO, UserEntity userEntity);
     void cancel(DelOrderDTO delOrderDTO, UserEntity userEntity);
-    void marketOrder(InsMarketDTO insMarketDTO, UserEntity userEntity);
+//    void marketOrder(InsMarketDTO insMarketDTO, UserEntity userEntity);
 }

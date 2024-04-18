@@ -1,13 +1,13 @@
 package com.example.cocoin.service.auth.api.act;
 
-import com.example.cocoin.service.auth.api.biz.LogoutService;
-import com.example.cocoin.service.auth.api.dto.TokenDTO;
 import com.example.cocoin.common.base.dto.ResponseDTO;
 import com.example.cocoin.common.base.vo.Code;
 import com.example.cocoin.common.config.jwt.provider.JwtTokenProvider;
-import com.example.cocoin.common.utils.CookieUtils;
+import com.example.cocoin.service.auth.api.biz.LogoutService;
+import com.example.cocoin.service.auth.api.dto.TokenDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.example.core.utils.CookieUtils;
 import org.springframework.web.bind.annotation.*;
 
 @Slf4j

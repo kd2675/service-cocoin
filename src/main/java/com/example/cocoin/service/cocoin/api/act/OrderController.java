@@ -39,10 +39,10 @@ public class OrderController {
 
         return ResponseDTO.of(true, Code.OK);
     }
-    @PostMapping("/marketOrder")
-    public ResponseDTO marketOrder(@RequestBody InsMarketDTO insMarketDTO, UserEntity userEntity) {
-        orderService.marketOrder(insMarketDTO, userEntity);
-
-        return ResponseDTO.of(true, Code.OK);
-    }
+//    @PostMapping("/marketOrder")
+//    public ResponseDTO marketOrder(@RequestBody InsMarketDTO insMarketDTO, UserEntity userEntity) {
+//        orderService.marketOrder(insMarketDTO, userEntity);
+//
+//        return ResponseDTO.of(true, Code.OK);
+//    }
 }

@@ -1,10 +1,10 @@
 package com.example.cocoin.service.auth.api.biz;
 
-import com.example.cocoin.common.utils.RequestUtils;
 import com.example.cocoin.service.auth.api.dto.JoinParamDTO;
 import com.example.cocoin.service.auth.database.rep.jpa.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.example.core.utils.RequestUtils;
 import org.example.database.auth.database.rep.jpa.auth.AuthEntity;
 import org.example.database.auth.database.rep.jpa.user.UserEntity;
 import org.example.database.auth.database.rep.jpa.wallet.WalletEntity;

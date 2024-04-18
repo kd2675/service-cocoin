@@ -13,6 +13,7 @@ spring:
       enabled: false
     restart:
       enabled: false
+      log-condition-evaluation-delta: false
   jpa:
 #    database: mysql
 #    database-platform: org.hibernate.dialect.MySQLDialect
