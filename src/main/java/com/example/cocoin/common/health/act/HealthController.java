@@ -1,5 +1,6 @@
 package com.example.cocoin.common.health.act;
 
+import com.example.cocoin.common.base.dto.ResponseDataDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.log.annotation.Log;
@@ -17,8 +18,8 @@ public class HealthController {
     @GetMapping("/ctf/health")
     @Log
     @Timer
-    public String health() {
-        return "OK";
+    public ResponseDataDTO<String> health() {
+        return ResponseDataDTO.of("OK");
     }
 
 }

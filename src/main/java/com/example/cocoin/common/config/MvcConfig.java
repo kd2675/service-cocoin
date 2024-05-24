@@ -7,10 +7,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.redis.repository.configuration.EnableRedisRepositories;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.ByteArrayHttpMessageConverter;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -31,6 +32,9 @@ public class MvcConfig implements WebMvcConfigurer {
 
     private final UserEntityResolver userEntityResolver;
 
+    @Value("${spring.profiles.active}")
+    private String profile;
+
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/js/**").addResourceLocations("classpath:/static/js/");
@@ -42,16 +46,16 @@ public class MvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
+        String[] origins = null;
+        if ("local".equals(profile)) {
+            origins = new String[]{
+                    "http://localhost",
+                    "http://localhost:23007/"
+            };
+        }
         registry.addMapping("/**")
                 .allowedOriginPatterns(
-                        "http://limepiece.com",
-                        "https://limepiece.com",
-                        "http://www.limepiece.com",
-                        "https://www.limepiece.com",
-                        "http://limepiece.com:11217",
-                        "https://limepiece.com:11217",
-                        "http://www.limepiece.com:11217",
-                        "https://www.limepiece.com:11217"
+                        origins
                 )
                 .allowedMethods("GET", "POST", "OPTIONS")
                 .allowedHeaders("authorization", "X-Auth-Token", "X-Requested-With", "Content-Type", "Original")
