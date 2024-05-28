@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import lombok.RequiredArgsConstructor;
+import org.example.core.utils.ServerTypeUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -25,15 +26,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Configuration
-@ComponentScan(basePackages = {"com.example.cocoin", "org.example.log"})
+@ComponentScan(basePackages = {"org.example.core", "com.example.cocoin", "org.example.log"})
 @EnableWebMvc
 @RequiredArgsConstructor
 public class MvcConfig implements WebMvcConfigurer {
-
     private final UserEntityResolver userEntityResolver;
-
-    @Value("${spring.profiles.active}")
-    private String profile;
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
@@ -47,11 +44,13 @@ public class MvcConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         String[] origins = null;
-        if ("local".equals(profile)) {
+        if (ServerTypeUtils.isLocal()) {
             origins = new String[]{
                     "http://localhost",
                     "http://localhost:23007/"
             };
+        } else {
+            origins = new String[]{"http://localhost",};
         }
         registry.addMapping("/**")
                 .allowedOriginPatterns(

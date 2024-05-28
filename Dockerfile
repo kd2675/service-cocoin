@@ -8,7 +8,9 @@ COPY . /build
 RUN gradle build -x test --parallel
 FROM openjdk:17-jdk-alpine
 WORKDIR /app
+
 RUN apk add curl
+
 COPY --from=builder /build/build/libs/*.jar ./app.jar
 ENV	USE_PROFILE dev
 

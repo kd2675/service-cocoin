@@ -2,13 +2,13 @@ server:
   port: 23107
 
 spring:
+  config:
+    activate:
+      on-profile: local
   data:
     redis:
       port: 16379
       host: 210.123.252.85
-  config:
-    activate:
-      on-profile: local
   session:
     store-type: redis
 
