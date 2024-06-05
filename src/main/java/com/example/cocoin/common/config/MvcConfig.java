@@ -46,8 +46,7 @@ public class MvcConfig implements WebMvcConfigurer {
         String[] origins = null;
         if (ServerTypeUtils.isLocal()) {
             origins = new String[]{
-                    "http://localhost",
-                    "http://localhost:23007/"
+                    "http://localhost:20090/"
             };
         } else {
             origins = new String[]{"http://localhost",};
