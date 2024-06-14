@@ -56,7 +56,7 @@ public class MvcConfig implements WebMvcConfigurer {
                         origins
                 )
                 .allowedMethods("GET", "POST", "OPTIONS")
-                .allowedHeaders("authorization", "X-Auth-Token", "X-Requested-With", "Content-Type", "Original")
+                .allowedHeaders("authorization", "X-Auth-Token", "X-Requested-With", "Content-Type", "Original", "Auth-header")
                 .allowCredentials(true);
     }
 
