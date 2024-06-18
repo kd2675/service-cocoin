@@ -70,7 +70,7 @@ database:
         maxLifetime: 1800000
     mattermost:
       master:
-        url: jdbc:mysql://mysql-20490:13306/crawling?zeroDateTimeBehavior=convertToNull&useLegacyDatetimeCode=false&serverTimezone=Asia/Seoul&noAccessToProcedureBodies=true&useSSL=false&allowPublicKeyRetrieval=true
+        url: jdbc:mysql://mysql-20490:13306/CRAWLING?zeroDateTimeBehavior=convertToNull&useLegacyDatetimeCode=false&serverTimezone=Asia/Seoul&noAccessToProcedureBodies=true&useSSL=false&allowPublicKeyRetrieval=true
         username: root
         password: 1234
         driver-class-name: com.mysql.cj.jdbc.Driver
@@ -78,7 +78,7 @@ database:
         connection-timeout: 30000
         maxLifetime: 1800000
       slave1:
-        url: jdbc:mysql://mysql-20490:13306/crawling?zeroDateTimeBehavior=convertToNull&useLegacyDatetimeCode=false&serverTimezone=Asia/Seoul&noAccessToProcedureBodies=true&useSSL=false&allowPublicKeyRetrieval=true
+        url: jdbc:mysql://mysql-20490:13306/CRAWLING?zeroDateTimeBehavior=convertToNull&useLegacyDatetimeCode=false&serverTimezone=Asia/Seoul&noAccessToProcedureBodies=true&useSSL=false&allowPublicKeyRetrieval=true
         username: root
         password: 1234
         driver-class-name: com.mysql.cj.jdbc.Driver
@@ -87,7 +87,7 @@ database:
         maxLifetime: 1800000
     coin:
       master:
-        url: jdbc:mysql://mysql-20490:13306/crawling?zeroDateTimeBehavior=convertToNull&useLegacyDatetimeCode=false&serverTimezone=Asia/Seoul&noAccessToProcedureBodies=true&useSSL=false&allowPublicKeyRetrieval=true
+        url: jdbc:mysql://mysql-20490:13306/CRAWLING?zeroDateTimeBehavior=convertToNull&useLegacyDatetimeCode=false&serverTimezone=Asia/Seoul&noAccessToProcedureBodies=true&useSSL=false&allowPublicKeyRetrieval=true
         username: root
         password: 1234
         driver-class-name: com.mysql.cj.jdbc.Driver
@@ -95,7 +95,7 @@ database:
         connection-timeout: 30000
         maxLifetime: 1800000
       slave1:
-        url: jdbc:mysql://mysql-20490:13306/crawling?zeroDateTimeBehavior=convertToNull&useLegacyDatetimeCode=false&serverTimezone=Asia/Seoul&noAccessToProcedureBodies=true&useSSL=false&allowPublicKeyRetrieval=true
+        url: jdbc:mysql://mysql-20490:13306/CRAWLING?zeroDateTimeBehavior=convertToNull&useLegacyDatetimeCode=false&serverTimezone=Asia/Seoul&noAccessToProcedureBodies=true&useSSL=false&allowPublicKeyRetrieval=true
         username: root
         password: 1234
         driver-class-name: com.mysql.cj.jdbc.Driver
