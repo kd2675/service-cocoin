@@ -28,7 +28,7 @@ import java.util.Map;
         entityManagerFactoryRef = "pubEntityManagerFactory",
         transactionManagerRef = "pubTransactionManager"
 )
-public class PubConfig {
+public class PubDataConfig {
     @Bean
     @Primary
     @ConfigurationProperties("database.datasource.pub.master")
