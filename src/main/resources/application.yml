@@ -30,6 +30,13 @@ spring:
     serialization:
       FAIL_ON_EMPTY_BEANS: false
       WRITE_DATES_AS_TIMESTAMPS: false
+  data:
+    redis:
+      repositories:
+        enabled: false
+    jpa:
+      repositories:
+        enabled: false
 
 server:
   tomcat:

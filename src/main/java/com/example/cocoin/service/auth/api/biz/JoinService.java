@@ -1,7 +1,7 @@
 package com.example.cocoin.service.auth.api.biz;
 
 import com.example.cocoin.service.auth.api.dto.JoinParamDTO;
-import com.example.cocoin.service.auth.database.rep.jpa.user.UserRepository;
+import com.example.cocoin.service.auth.database.rep.jpa.user.UserREP;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.core.utils.RequestUtils;
@@ -21,7 +21,7 @@ import org.springframework.validation.FieldError;
 public class JoinService {
 
     private final PasswordEncoder passwordEncoder;
-    private final UserRepository userRepository;
+    private final UserREP userREP;
 
     @Transactional
     public void joinUser(JoinParamDTO joinParamDTO) {
@@ -47,7 +47,7 @@ public class JoinService {
                         .userEntity(userEntity)
                         .build()
         );
-        userRepository.save(userEntity);
+        userREP.save(userEntity);
     }
 
     @Transactional
@@ -74,7 +74,7 @@ public class JoinService {
                         .userEntity(userEntity)
                         .build()
         );
-        userRepository.save(userEntity);
+        userREP.save(userEntity);
     }
 
     @Transactional
@@ -102,7 +102,7 @@ public class JoinService {
                         .userEntity(userEntity)
                         .build()
         );
-        userRepository.save(userEntity);
+        userREP.save(userEntity);
     }
 
     public Boolean valid(JoinParamDTO joinParamDTO, BindingResult bindingResult) {
@@ -160,11 +160,11 @@ public class JoinService {
 
     @Transactional(readOnly = true)
     public boolean isDuplicatedEmail(String email) {
-        return userRepository.existsByEmail(email);
+        return userREP.existsByEmail(email);
     }
 
     @Transactional(readOnly = true)
     public boolean isDuplicatedNickName(String nick) {
-        return userRepository.existsByNick(nick);
+        return userREP.existsByNick(nick);
     }
 }

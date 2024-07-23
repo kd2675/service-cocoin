@@ -2,7 +2,7 @@ package com.example.cocoin.service.cocoin.api.biz;
 
 import com.example.cocoin.common.base.vo.Code;
 import com.example.cocoin.common.exception.GeneralException;
-import com.example.cocoin.service.auth.database.rep.jpa.user.UserRepository;
+import com.example.cocoin.service.auth.database.rep.jpa.user.UserREP;
 import com.example.cocoin.service.cocoin.api.dto.DelOrderDTO;
 import com.example.cocoin.service.cocoin.api.dto.InsOrderDTO;
 import com.example.cocoin.service.cocoin.database.rep.jpa.market.MarketEntity;
@@ -28,7 +28,7 @@ import java.util.Objects;
 @RequiredArgsConstructor
 @Slf4j
 public class OrderServiceImpl implements OrderService {
-    private final UserRepository userRepository;
+    private final UserREP userREP;
     private final OrderRepository orderRepository;
     private final MarketRepository marketRepository;
 

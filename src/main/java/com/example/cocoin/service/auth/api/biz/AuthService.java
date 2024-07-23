@@ -1,19 +1,14 @@
 package com.example.cocoin.service.auth.api.biz;
 
 import com.example.cocoin.common.config.jwt.provider.JwtTokenProvider;
-import com.example.cocoin.service.auth.database.rep.jpa.user.UserRepository;
+import com.example.cocoin.service.auth.database.rep.jpa.user.UserREP;
 import lombok.RequiredArgsConstructor;
-import org.example.database.auth.database.rep.jpa.user.UserDTO;
-import org.example.database.auth.database.rep.jpa.user.UserEntity;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
-
-import java.util.NoSuchElementException;
 
 @Service
 @RequiredArgsConstructor
 public class AuthService {
-    private final UserRepository userRepository;
+    private final UserREP userREP;
     private final JwtTokenProvider jwtTokenProvider;
 
 //    public UserDTO getUserInfo(String userEmail) {

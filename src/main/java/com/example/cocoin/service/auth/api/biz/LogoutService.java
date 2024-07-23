@@ -3,8 +3,8 @@ package com.example.cocoin.service.auth.api.biz;
 import com.example.cocoin.common.config.jwt.cache.CacheKey;
 import com.example.cocoin.common.config.jwt.provider.JwtTokenProvider;
 import com.example.cocoin.service.auth.api.dto.TokenDTO;
-import com.example.cocoin.service.auth.database.rep.redis.logout.LogoutAccessTokenRedisRepository;
-import com.example.cocoin.service.auth.database.rep.redis.refresh.RefreshTokenRedisRepository;
+import com.example.cocoin.service.auth.database.rep.redis.logout.LogoutAccessTokenRedisREP;
+import com.example.cocoin.service.auth.database.rep.redis.refresh.RefreshTokenRedisREP;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.database.auth.database.rep.redis.logout.LogoutAccessTokenRedis;
@@ -17,8 +17,8 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class LogoutService {
     private final JwtTokenProvider jwtTokenProvider;
-    private final RefreshTokenRedisRepository refreshTokenRedisRepository;
-    private final LogoutAccessTokenRedisRepository logoutAccessTokenRedisRepository;
+    private final RefreshTokenRedisREP refreshTokenRedisREP;
+    private final LogoutAccessTokenRedisREP logoutAccessTokenRedisREP;
 
     // 4
     @Transactional
@@ -27,8 +27,8 @@ public class LogoutService {
         String accessToken = jwtTokenProvider.resolveToken(tokenDTO.getAccessToken());
         String refreshToken = jwtTokenProvider.resolveToken(tokenDTO.getRefreshToken());
         long remainMilliSeconds = jwtTokenProvider.getRemainMilliSeconds(refreshToken);
-        refreshTokenRedisRepository.deleteById(email);
-        logoutAccessTokenRedisRepository.save(LogoutAccessTokenRedis.of(accessToken, email, remainMilliSeconds));
+        refreshTokenRedisREP.deleteById(email);
+        logoutAccessTokenRedisREP.save(LogoutAccessTokenRedis.of(accessToken, email, remainMilliSeconds));
     }
 
 }

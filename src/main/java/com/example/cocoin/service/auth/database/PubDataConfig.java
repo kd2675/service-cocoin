@@ -23,8 +23,7 @@ import java.util.Map;
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(
-        basePackages = "com.example.cocoin.service.auth.database.rep.jpa",
-//        basePackages = "org.example.database.auth.database.rep.jpa",
+        basePackages = {"org.example.database.auth.database.rep.jpa", "com.example.cocoin.service.auth.database.rep.jpa"},
         entityManagerFactoryRef = "pubEntityManagerFactory",
         transactionManagerRef = "pubTransactionManager"
 )

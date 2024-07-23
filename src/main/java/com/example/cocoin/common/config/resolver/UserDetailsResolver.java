@@ -1,12 +1,9 @@
 package com.example.cocoin.common.config.resolver;
 
-import com.example.cocoin.common.base.vo.Code;
 import com.example.cocoin.common.config.jwt.provider.JwtTokenProvider;
-import com.example.cocoin.common.exception.GeneralException;
-import com.example.cocoin.service.auth.database.rep.jpa.user.UserRepository;
+import com.example.cocoin.service.auth.database.rep.jpa.user.UserREP;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.example.database.auth.database.rep.jpa.user.UserEntity;
 import org.springframework.core.MethodParameter;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -21,7 +18,7 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 @Component
 public class UserDetailsResolver implements HandlerMethodArgumentResolver {
     private final UserDetailsService userDetailsService;
-    private final UserRepository userRepository;
+    private final UserREP userREP;
     private final JwtTokenProvider jwtTokenProvider;
 
     @Override

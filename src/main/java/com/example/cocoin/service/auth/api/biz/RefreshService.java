@@ -5,7 +5,7 @@ import com.example.cocoin.common.config.jwt.enums.JwtExpirationEnums;
 import com.example.cocoin.common.config.jwt.provider.JwtTokenProvider;
 import com.example.cocoin.common.exception.GeneralException;
 import com.example.cocoin.service.auth.api.dto.TokenDTO;
-import com.example.cocoin.service.auth.database.rep.redis.refresh.RefreshTokenRedisRepository;
+import com.example.cocoin.service.auth.database.rep.redis.refresh.RefreshTokenRedisREP;
 import lombok.RequiredArgsConstructor;
 import org.example.core.utils.CookieUtils;
 import org.example.database.auth.database.rep.redis.refresh.RefreshTokenRedis;
@@ -16,12 +16,12 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class RefreshService {
     private final JwtTokenProvider jwtTokenProvider;
-    private final RefreshTokenRedisRepository refreshTokenRedisRepository;
+    private final RefreshTokenRedisREP refreshTokenRedisREP;
     @Transactional(readOnly = true)
     public TokenDTO refresh(String refreshToken) {
         refreshToken = jwtTokenProvider.resolveToken(refreshToken);
         String userEmail = jwtTokenProvider.getUserEmail(refreshToken);
-        RefreshTokenRedis redisRefreshToken = refreshTokenRedisRepository.findById(userEmail)
+        RefreshTokenRedis redisRefreshToken = refreshTokenRedisREP.findById(userEmail)
                 .orElseThrow(() -> new GeneralException(Code.NO_SEARCH_USER));
         if (!refreshToken.equals(redisRefreshToken.getRefreshToken())) {
             CookieUtils.deleteCookie("RefreshToken");

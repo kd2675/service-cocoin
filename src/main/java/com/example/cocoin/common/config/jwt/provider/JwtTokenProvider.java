@@ -4,8 +4,8 @@ import com.example.cocoin.common.base.vo.Code;
 import com.example.cocoin.common.config.jwt.enums.JwtExpirationEnums;
 import com.example.cocoin.common.config.jwt.enums.JwtHeaderUtilEnums;
 import com.example.cocoin.common.exception.GeneralException;
-import com.example.cocoin.service.auth.database.rep.redis.logout.LogoutAccessTokenRedisRepository;
-import com.example.cocoin.service.auth.database.rep.redis.refresh.RefreshTokenRedisRepository;
+import com.example.cocoin.service.auth.database.rep.redis.logout.LogoutAccessTokenRedisREP;
+import com.example.cocoin.service.auth.database.rep.redis.refresh.RefreshTokenRedisREP;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -38,8 +38,8 @@ public class JwtTokenProvider {
     private final UserDetailsService userDetailsService;
     private final PasswordEncoder passwordEncoder;
 
-    private final RefreshTokenRedisRepository refreshTokenRedisRepository;
-    private final LogoutAccessTokenRedisRepository logoutAccessTokenRedisRepository;
+    private final RefreshTokenRedisREP refreshTokenRedisREP;
+    private final LogoutAccessTokenRedisREP logoutAccessTokenRedisREP;
 
     @Value("${jwt.secret}")
     private String SECRET_KEY;
@@ -66,7 +66,7 @@ public class JwtTokenProvider {
                         JwtExpirationEnums.REFRESH_TOKEN_EXPIRATION_TIME.getValue()
                 );
 
-        refreshTokenRedisRepository.save(
+        refreshTokenRedisREP.save(
                 RefreshTokenRedis.createRefreshToken(
                         userEmail,
                         token,
@@ -136,7 +136,7 @@ public class JwtTokenProvider {
 
     public Boolean validateToken(String accessToken) {
         //로그아웃 체크
-        if (logoutAccessTokenRedisRepository.existsById(accessToken)) {
+        if (logoutAccessTokenRedisREP.existsById(accessToken)) {
             return false;
         }
 

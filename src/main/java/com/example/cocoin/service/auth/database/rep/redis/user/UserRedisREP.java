@@ -4,5 +4,5 @@ import org.example.database.auth.database.rep.redis.user.UserRedisEntity;
 import org.springframework.data.keyvalue.repository.KeyValueRepository;
 
 
-public interface UserRedisRepository extends KeyValueRepository<UserRedisEntity, String> {
+public interface UserRedisREP extends KeyValueRepository<UserRedisEntity, String> {
 }

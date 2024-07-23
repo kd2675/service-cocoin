@@ -2,13 +2,12 @@ package com.example.cocoin.common.config.resolver;
 
 import com.example.cocoin.common.base.vo.Code;
 import com.example.cocoin.common.exception.GeneralException;
-import com.example.cocoin.service.auth.database.rep.jpa.user.UserRepository;
+import com.example.cocoin.service.auth.database.rep.jpa.user.UserREP;
 import com.example.cocoin.common.config.jwt.provider.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.database.auth.database.rep.jpa.user.UserEntity;
 import org.springframework.core.MethodParameter;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.support.WebDataBinderFactory;
@@ -21,7 +20,7 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 @Component
 public class UserEntityResolver implements HandlerMethodArgumentResolver {
     private final UserDetailsService userDetailsService;
-    private final UserRepository userRepository;
+    private final UserREP userREP;
     private final JwtTokenProvider jwtTokenProvider;
 
     @Override
@@ -34,7 +33,7 @@ public class UserEntityResolver implements HandlerMethodArgumentResolver {
         UserEntity userEntity = new UserEntity();
         String userEmail = jwtTokenProvider.getUserEmail();
         if (userEmail != null) {
-            userEntity = userRepository.findByEmailWithRole(userEmail)
+            userEntity = userREP.findByEmailWithRole(userEmail)
                     .orElseThrow(() -> new GeneralException(Code.NO_SEARCH_USER, "회원이 없습니다."));
 //        if (!userEntity.getUserEmail().equals(jwtTokenProvider.getCurrentUserEmail())) {
 //            if (!userEntity.getEmail().equals(jwtTokenProvider.getUserEmail())) {
