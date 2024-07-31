@@ -1,11 +1,11 @@
 package com.example.cocoin.service.auth.api.act;
 
 import com.example.cocoin.service.auth.api.biz.AuthService;
-import com.example.cocoin.common.base.dto.ResponseDataDTO;
-import com.example.cocoin.common.base.dto.ResponseDTO;
-import com.example.cocoin.common.base.vo.Code;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.example.core.response.base.dto.ResponseDTO;
+import org.example.core.response.base.dto.ResponseDataDTO;
+import org.example.core.response.base.vo.Code;
 import org.example.database.auth.database.rep.jpa.user.UserDTO;
 import org.example.database.auth.database.rep.jpa.user.UserEntity;
 import org.springframework.security.core.Authentication;

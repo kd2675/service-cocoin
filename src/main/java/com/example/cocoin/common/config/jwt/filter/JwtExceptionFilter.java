@@ -1,8 +1,5 @@
 package com.example.cocoin.common.config.jwt.filter;
 
-import com.example.cocoin.common.base.dto.ResponseDTO;
-import com.example.cocoin.common.base.vo.Code;
-import com.example.cocoin.common.exception.GeneralException;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.ExpiredJwtException;
@@ -15,6 +12,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.coyote.Response;
+import org.example.core.response.base.dto.ResponseDTO;
+import org.example.core.response.base.vo.Code;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;

@@ -2,11 +2,11 @@ package com.example.cocoin.service.auth.api.act;
 
 import com.example.cocoin.service.auth.api.biz.RefreshService;
 import com.example.cocoin.service.auth.api.dto.TokenDTO;
-import com.example.cocoin.common.base.dto.ResponseDataDTO;
-import com.example.cocoin.common.base.vo.Code;
-import com.example.cocoin.common.exception.GeneralException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.example.core.response.base.dto.ResponseDataDTO;
+import org.example.core.response.base.exception.GeneralException;
+import org.example.core.response.base.vo.Code;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

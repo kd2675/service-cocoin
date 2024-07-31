@@ -1,9 +1,7 @@
 package com.example.cocoin.common.config.jwt.provider;
 
-import com.example.cocoin.common.base.vo.Code;
 import com.example.cocoin.common.config.jwt.enums.JwtExpirationEnums;
 import com.example.cocoin.common.config.jwt.enums.JwtHeaderUtilEnums;
-import com.example.cocoin.common.exception.GeneralException;
 import com.example.cocoin.service.auth.database.rep.redis.logout.LogoutAccessTokenRedisREP;
 import com.example.cocoin.service.auth.database.rep.redis.refresh.RefreshTokenRedisREP;
 import io.jsonwebtoken.Claims;
@@ -13,6 +11,8 @@ import io.jsonwebtoken.security.Keys;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.example.core.response.base.exception.GeneralException;
+import org.example.core.response.base.vo.Code;
 import org.example.core.utils.CookieUtils;
 import org.example.database.auth.database.rep.redis.refresh.RefreshTokenRedis;
 import org.springframework.beans.factory.annotation.Value;

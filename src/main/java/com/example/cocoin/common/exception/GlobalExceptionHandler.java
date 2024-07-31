@@ -1,11 +1,11 @@
 package com.example.cocoin.common.exception;
 
-import com.example.cocoin.common.base.dto.ResponseErrorDTO;
-import com.example.cocoin.common.base.vo.Code;
 import jakarta.validation.ConstraintViolationException;
 import lombok.extern.slf4j.Slf4j;
+import org.example.core.response.base.dto.ResponseErrorDTO;
+import org.example.core.response.base.exception.GeneralException;
+import org.example.core.response.base.vo.Code;
 import org.example.core.utils.ServerTypeUtils;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;

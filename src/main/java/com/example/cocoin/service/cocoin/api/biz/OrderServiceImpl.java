@@ -1,7 +1,5 @@
 package com.example.cocoin.service.cocoin.api.biz;
 
-import com.example.cocoin.common.base.vo.Code;
-import com.example.cocoin.common.exception.GeneralException;
 import com.example.cocoin.service.auth.database.rep.jpa.user.UserREP;
 import com.example.cocoin.service.cocoin.api.dto.DelOrderDTO;
 import com.example.cocoin.service.cocoin.api.dto.InsOrderDTO;
@@ -13,6 +11,8 @@ import com.example.cocoin.service.cocoin.database.rep.jpa.order.OrderRepository;
 import com.example.cocoin.service.coin.database.rep.jpa.coin.CoinREP;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.example.core.response.base.exception.GeneralException;
+import org.example.core.response.base.vo.Code;
 import org.example.database.auth.database.rep.jpa.user.UserEntity;
 import org.example.log.annotation.LogOrder;
 import org.example.log.annotation.Timer;

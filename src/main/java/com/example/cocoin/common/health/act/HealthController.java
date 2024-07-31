@@ -1,8 +1,8 @@
 package com.example.cocoin.common.health.act;
 
-import com.example.cocoin.common.base.dto.ResponseDataDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.example.core.response.base.dto.ResponseDataDTO;
 import org.example.log.annotation.Log;
 import org.example.log.annotation.Timer;
 import org.springframework.web.bind.annotation.GetMapping;
