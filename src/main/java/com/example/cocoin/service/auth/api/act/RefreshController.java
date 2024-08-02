@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(value = {"/api/auth"})
+@RequestMapping(value = {"/cocoin/api/auth"})
 public class RefreshController {
     private final RefreshService refreshService;
     @PostMapping("/ctf/refresh")

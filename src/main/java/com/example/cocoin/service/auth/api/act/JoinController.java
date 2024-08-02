@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/auth/ctf/join")
+@RequestMapping("/cocoin/api/auth")
 public class JoinController {
     private final JoinService joinService;
 
-    @PostMapping("/user")
+    @PostMapping("/ctf/join/user")
     public ResponseDTO join(@Valid @RequestBody JoinParamDTO joinParamDTO, BindingResult bindingResult) {
         if (joinService.valid(joinParamDTO, bindingResult)) {
             return ResponseDTO.of(false, Code.VALIDATION_ERROR, bindingResult.getFieldError().getDefaultMessage());
@@ -29,7 +29,7 @@ public class JoinController {
         return ResponseDTO.of(true, Code.OK);
     }
 
-    @PostMapping("/admin")
+    @PostMapping("/ctf/join/admin")
     public ResponseDTO joinAdmin(@Valid @RequestBody JoinParamDTO joinParamDTO, BindingResult bindingResult) {
         if (joinService.valid(joinParamDTO, bindingResult)) {
             return ResponseDTO.of(false, Code.VALIDATION_ERROR, bindingResult.getFieldError().getDefaultMessage());
@@ -40,7 +40,7 @@ public class JoinController {
         return ResponseDTO.of(true, Code.OK);
     }
 
-    @PostMapping("/social")
+    @PostMapping("/ctf/join/social")
     public ResponseDTO joinSocial(@Valid @RequestBody JoinParamDTO joinParamDTO, BindingResult bindingResult) {
         if (joinService.valid(joinParamDTO, bindingResult)) {
             return ResponseDTO.of(false, Code.VALIDATION_ERROR, bindingResult.getFieldError().getDefaultMessage());
@@ -51,12 +51,12 @@ public class JoinController {
         return ResponseDTO.of(true, Code.OK);
     }
 
-    @GetMapping("/selEmailCheck")
+    @GetMapping("/ctf/join/selEmailCheck")
     public ResponseDataDTO joinIdCheck(@RequestParam(name = "userEmail") String email) {
         return ResponseDataDTO.of(joinService.duplEmail(email));
     }
 
-    @GetMapping("/selNickCheck")
+    @GetMapping("/ctf/join/selNickCheck")
     public ResponseDataDTO joinNickCheck(@RequestParam(name = "userNick") String nick) {
         return ResponseDataDTO.of(joinService.duplNick(nick));
     }

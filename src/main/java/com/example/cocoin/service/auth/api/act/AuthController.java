@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(value = {"/api/auth"})
+@RequestMapping(value = {"/cocoin/api/auth"})
 public class AuthController {
 
     private final AuthService authService;
@@ -27,7 +27,7 @@ public class AuthController {
 //        return userService.getUserInfo(userEmail);
 //    }
 
-    @GetMapping("/check")
+    @GetMapping("/ctf/check")
     public ResponseDTO getCheck() {
         return ResponseDTO.of(true, Code.OK);
     }

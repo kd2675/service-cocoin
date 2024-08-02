@@ -44,8 +44,8 @@ public class SecurityConfig {
 //    private final JwtTokenProvider jwtTokenProvider;
 
     public static final String[] PERMIT_ALL_URL = {
-            "/api/auth/ctf/**",
-            "/error"
+            "/cocoin/api/auth/ctf/**",
+            "/cocoin/error"
     };
 
 //    @Bean

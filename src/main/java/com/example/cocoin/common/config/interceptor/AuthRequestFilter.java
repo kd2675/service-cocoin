@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.Optional;
 
 public class AuthRequestFilter implements HandlerInterceptor {
-    private String key = "cocoin";
+    private String key = "second";
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String getAdminHeader = Optional.ofNullable(request.getHeader("Auth-header")).orElse("");

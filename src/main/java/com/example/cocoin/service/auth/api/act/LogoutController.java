@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(value = {"/api/auth"})
+@RequestMapping(value = {"/cocoin/api/auth"})
 public class LogoutController {
     private final LogoutService logoutService;
     private final JwtTokenProvider jwtTokenProvider;

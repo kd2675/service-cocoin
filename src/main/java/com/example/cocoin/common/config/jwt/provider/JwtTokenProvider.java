@@ -159,6 +159,7 @@ public class JwtTokenProvider {
 
     public void checkPassword(String rawPassword, String findMemberPassword) {
         if (!passwordEncoder.matches(rawPassword, findMemberPassword)) {
+            log.error("비밀번호가 맞지 않습니다.");
             throw new GeneralException(Code.NOT_MATCH_PASSWORD, "비밀번호가 맞지 않습니다.");
         }
     }
