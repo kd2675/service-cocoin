@@ -12,6 +12,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Slf4j
@@ -47,12 +48,14 @@ public class BithumbApiUtilImpl implements BithumbApiUtil {
         return null;
     }
     @Override
-    public BithumbCandlesVO candles(String query) {
+    public List<BithumbCandlesVO> candles(String query) {
+        List<BithumbCandlesVO> bithumbCandlesVOS = new ArrayList<>();
+
         URI uri = UriComponentsBuilder
                 .fromUriString("https://api.bithumb.com")
                 .path("/v1/candles/minutes/1")
                 .queryParam("market", "KRW-"+query)
-                .queryParam("count", "1")
+                .queryParam("count", "10")
                 .encode()
                 .build()
                 .toUri();
@@ -60,10 +63,14 @@ public class BithumbApiUtilImpl implements BithumbApiUtil {
         ArrayList forObject = restTemplate.getForObject(uri, ArrayList.class);
 
         if (forObject != null && !forObject.isEmpty()) {
-            ObjectMapper objectMapper = new ObjectMapper();
-            BithumbCandlesVO bithumbDataVO = objectMapper.convertValue(Objects.requireNonNull(forObject).get(0), BithumbCandlesVO.class);
+            for(Object o : forObject) {
+                ObjectMapper objectMapper = new ObjectMapper();
+                BithumbCandlesVO bithumbDataVO = objectMapper.convertValue(Objects.requireNonNull(o), BithumbCandlesVO.class);
 
-            return bithumbDataVO;
+                bithumbCandlesVOS.add(bithumbDataVO);
+            }
+
+            return bithumbCandlesVOS;
         }
 
         return null;

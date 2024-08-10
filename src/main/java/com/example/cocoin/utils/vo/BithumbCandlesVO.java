@@ -14,9 +14,9 @@ public class BithumbCandlesVO {
     @JsonProperty("market")
     private String market;
     @JsonProperty("candle_date_time_utc")
-    private LocalDateTime candleDateTimeUtc;
+    private String candleDateTimeUtc;
     @JsonProperty("candle_date_time_kst")
-    private LocalDateTime candleDateTimeKst;
+    private String candleDateTimeKst;
     @JsonProperty("opening_price")
     private String openingPrice;
     @JsonProperty("high_price")

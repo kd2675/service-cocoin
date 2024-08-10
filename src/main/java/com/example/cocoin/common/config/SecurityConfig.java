@@ -45,6 +45,7 @@ public class SecurityConfig {
 
     public static final String[] PERMIT_ALL_URL = {
             "/cocoin/api/auth/ctf/**",
+            "/cocoin/api/cocoin/ctf/**",
             "/cocoin/error"
     };
 
