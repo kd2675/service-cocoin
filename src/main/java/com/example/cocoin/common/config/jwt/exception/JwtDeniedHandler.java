@@ -1,4 +1,4 @@
-package com.example.cocoin.common.config.jwt.excepion;
+package com.example.cocoin.common.config.jwt.exception;
 
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;

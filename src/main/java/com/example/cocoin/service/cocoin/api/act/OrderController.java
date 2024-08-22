@@ -7,6 +7,7 @@ import com.example.cocoin.service.cocoin.api.dto.InsOrderDTO;
 import com.example.cocoin.service.cocoin.database.rep.jpa.order.OrderDTO;
 import com.example.cocoin.utils.BithumbApiUtil;
 import com.example.cocoin.utils.vo.BithumbCandlesVO;
+import com.example.cocoin.utils.vo.BithumbOrderbookDTO;
 import com.example.cocoin.utils.vo.BithumbOrderbookVO;
 import com.example.cocoin.utils.vo.BithumbTickerVO;
 import jakarta.validation.Valid;
@@ -47,13 +48,30 @@ public class OrderController {
     }
 
     @GetMapping("/ctf/chart/ticker")
-    public ResponseDTO chartTicker() {
+    public ResponseDTO ticker() {
 
         BithumbTickerVO btc = bithumbApiUtil.ticker("BTC");
-        List<BithumbCandlesVO> candles = bithumbApiUtil.candles("BTC");
-        BithumbOrderbookVO orderbook = bithumbApiUtil.orderbook("BTC");
+//        List<BithumbCandlesVO> candles = bithumbApiUtil.candles("BTC");
+//        BithumbOrderbookVO orderbook = bithumbApiUtil.orderbook("BTC");
 
         return ResponseDTO.of(true, Code.OK);
+    }
+
+    @GetMapping("/ctf/chart/candles")
+    public ResponseDTO candles() {
+
+//        BithumbTickerVO btc = bithumbApiUtil.ticker("BTC");
+        List<BithumbCandlesVO> candles = bithumbApiUtil.candles("BTC");
+//        BithumbOrderbookVO orderbook = bithumbApiUtil.orderbook("BTC");
+
+        return ResponseDataDTO.of(candles);
+    }
+
+    @GetMapping("/ctf/chart/bid")
+    public ResponseDTO bid() {
+        BithumbOrderbookVO orderbook = bithumbApiUtil.orderbook("BTC");
+
+        return ResponseDataDTO.of(BithumbOrderbookDTO.fromBithumbOrderbookVO(orderbook));
     }
 
 //    @PostMapping("/marketOrder")
