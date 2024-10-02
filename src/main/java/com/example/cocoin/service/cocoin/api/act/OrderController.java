@@ -6,10 +6,7 @@ import com.example.cocoin.service.cocoin.api.dto.InsMarketDTO;
 import com.example.cocoin.service.cocoin.api.dto.InsOrderDTO;
 import com.example.cocoin.service.cocoin.database.rep.jpa.order.OrderDTO;
 import com.example.cocoin.utils.BithumbApiUtil;
-import com.example.cocoin.utils.vo.BithumbCandlesVO;
-import com.example.cocoin.utils.vo.BithumbOrderbookDTO;
-import com.example.cocoin.utils.vo.BithumbOrderbookVO;
-import com.example.cocoin.utils.vo.BithumbTickerVO;
+import com.example.cocoin.utils.vo.*;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.example.core.response.base.dto.ResponseDTO;
@@ -54,7 +51,7 @@ public class OrderController {
 //        List<BithumbCandlesVO> candles = bithumbApiUtil.candles("BTC");
 //        BithumbOrderbookVO orderbook = bithumbApiUtil.orderbook("BTC");
 
-        return ResponseDTO.of(true, Code.OK);
+        return ResponseDataDTO.of(BithumbTickerDTO.fromBithumbTickerVO(btc));
     }
 
     @GetMapping("/ctf/chart/candles")

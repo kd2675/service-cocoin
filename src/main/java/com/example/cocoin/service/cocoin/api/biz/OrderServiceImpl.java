@@ -65,9 +65,9 @@ public class OrderServiceImpl implements OrderService {
         BigDecimal pointDec = new BigDecimal(userEntity.getWalletEntity().getPoint());
         double fullPrice = insOrderDTO.getPrice() * insOrderDTO.getCnt();
         BigDecimal fullPriceDec = new BigDecimal(fullPrice);
-//        if (pointDec.compareTo(fullPriceDec) < 0) {
-//            throw new GeneralException(Code.NOT_ENOUGH_POINT);
-//        }
+        if (pointDec.compareTo(fullPriceDec) < 0) {
+            throw new GeneralException(Code.NOT_ENOUGH_POINT);
+        }
 
         List<OrderEntity> byUserEntityAndOrderSlctAndCoinSlctAndMarginSlct = orderRepository.findByUserEntityAndOrderSlctAndCoinSlctAndMarginSlct(
                 userEntity,
