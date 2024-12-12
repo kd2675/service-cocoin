@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/cocoin/api/auth")
+@RequestMapping("/cocoin")
 public class JoinController {
     private final JoinService joinService;
 

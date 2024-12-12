@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/cocoin/api/cocoin")
+@RequestMapping("/cocoin")
 @RequiredArgsConstructor
 public class OrderController {
     private final OrderService orderService;
