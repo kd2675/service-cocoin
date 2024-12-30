@@ -13,6 +13,8 @@ import org.example.core.response.base.dto.ResponseDTO;
 import org.example.core.response.base.dto.ResponseDataDTO;
 import org.example.core.response.base.vo.Code;
 import org.example.database.auth.database.rep.jpa.user.UserEntity;
+import org.example.log.annotation.Log;
+import org.example.log.annotation.Timer;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
@@ -44,6 +46,7 @@ public class OrderController {
         return ResponseDTO.of(true, Code.OK);
     }
 
+    @Timer
     @GetMapping("/ctf/chart/ticker")
     public ResponseDTO ticker() {
 
@@ -54,6 +57,7 @@ public class OrderController {
         return ResponseDataDTO.of(BithumbTickerDTO.fromBithumbTickerVO(btc));
     }
 
+    @Timer
     @GetMapping("/ctf/chart/candles")
     public ResponseDTO candles() {
 
@@ -64,6 +68,7 @@ public class OrderController {
         return ResponseDataDTO.of(candles);
     }
 
+    @Timer
     @GetMapping("/ctf/chart/bid")
     public ResponseDTO bid() {
         BithumbOrderbookVO orderbook = bithumbApiUtil.orderbook("BTC");
