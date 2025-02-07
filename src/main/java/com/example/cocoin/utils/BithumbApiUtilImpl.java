@@ -19,11 +19,6 @@ import java.util.Objects;
 @RequiredArgsConstructor
 @Service
 public class BithumbApiUtilImpl implements BithumbApiUtil {
-    private static final String NAVER_API_URL = "https://openapi.naver.com";
-    private static final String NAVER_API_PATH = "/v1/search/news.json";
-    private static final String NAVER_API_CLIENT_ID = "97avHwhY7N2bJ4RysxAx";
-    private static final String NAVER_API_CLIENT_SECRET = "74r7XpIXPi";
-
     private final RestTemplate restTemplate;
 
     @Override
