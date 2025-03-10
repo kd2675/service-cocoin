@@ -29,8 +29,11 @@ public class UserDetailsResolver implements HandlerMethodArgumentResolver {
     @Override
     public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer, NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {
 //        UserEntity userEntity = new UserEntity();
+        String authorizationHeader = webRequest.getHeader("Authorization");
+
         UserDetails userDetails = null;
-        String userEmail = jwtTokenProvider.getUserEmail();
+        String userEmail = jwtTokenProvider.getUserEmail(jwtTokenProvider.resolveToken(authorizationHeader));
+
         if (userEmail != null) {
             userDetails = userDetailsService.loadUserByUsername(userEmail);
 //            userEntity = userRepository.findByEmailWithRole(userEmail)

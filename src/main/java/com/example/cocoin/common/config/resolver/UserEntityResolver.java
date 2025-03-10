@@ -30,8 +30,10 @@ public class UserEntityResolver implements HandlerMethodArgumentResolver {
 
     @Override
     public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer, NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {
+        String authorizationHeader = webRequest.getHeader("Authorization");
+
         UserEntity userEntity = new UserEntity();
-        String userEmail = jwtTokenProvider.getUserEmail();
+        String userEmail = jwtTokenProvider.getUserEmail(jwtTokenProvider.resolveToken(authorizationHeader));
         if (userEmail != null) {
             userEntity = userREP.findByEmailWithRole(userEmail)
                     .orElseThrow(() -> new GeneralException(Code.NO_SEARCH_USER, "회원이 없습니다."));
