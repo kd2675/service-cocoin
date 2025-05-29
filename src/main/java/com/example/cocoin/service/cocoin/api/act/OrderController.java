@@ -15,7 +15,6 @@ import org.example.core.response.base.vo.Code;
 import org.example.database.auth.database.rep.jpa.user.UserEntity;
 import org.example.log.annotation.Log;
 import org.example.log.annotation.Timer;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

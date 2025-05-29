@@ -45,6 +45,3 @@ server:
   servlet:
     session:
       timeout: 86400
-
-jwt:
-  secret: testtesttesttesttsttesttesttesttest

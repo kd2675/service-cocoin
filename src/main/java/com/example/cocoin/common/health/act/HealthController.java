@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.core.response.base.dto.ResponseDTO;
 import org.example.core.response.base.dto.ResponseDataDTO;
+import org.example.core.response.base.exception.GeneralException;
 import org.example.core.response.base.vo.Code;
 import org.example.log.annotation.Log;
 import org.example.log.annotation.Timer;
@@ -21,7 +22,8 @@ public class HealthController {
     @Log
     @Timer
     public ResponseDTO health() {
-        return ResponseDTO.of(true, Code.OK);
+        throw new GeneralException(Code.TEST_1);
+//        return ResponseDTO.of(true, Code.OK);
     }
 
 }
