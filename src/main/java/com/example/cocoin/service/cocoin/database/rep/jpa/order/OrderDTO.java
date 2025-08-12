@@ -2,9 +2,9 @@ package com.example.cocoin.service.cocoin.database.rep.jpa.order;
 
 import lombok.Getter;
 import lombok.ToString;
-import org.example.database.auth.database.rep.jpa.user.UserDTO;
-import org.example.database.common.rep.jpa.CommonDateDTO;
-import org.example.database.common.rep.jpa.CommonDateEntity;
+import org.example.database.database.auth.dto.UserDTO;
+import org.example.database.common.jpa.CommonDateDTO;
+import org.example.database.common.jpa.CommonDateEntity;
 
 @ToString
 @Getter

@@ -1,7 +1,7 @@
 package com.example.cocoin.service.cocoin.database;
 
 import com.zaxxer.hikari.HikariDataSource;
-import org.example.database.common.RoutingDataSource;
+import org.example.database.common.datasource.RoutingDataSource;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -85,7 +85,7 @@ public class CocoinDataConfig {
 
         return builder
                 .dataSource(new LazyConnectionDataSourceProxy(routingDataSource))
-                .packages("com.example.cocoin.service.cocoin.database.rep.jpa", "org.example.database.auth.database.rep.jpa")
+                .packages("com.example.cocoin.service.cocoin.database.rep.jpa", "org.example.database.database.auth.rep.jpa")
                 .properties(properties)
                 .persistenceUnit("cocoinEntityManagerFactory")
                 .build();

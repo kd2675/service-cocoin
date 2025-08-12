@@ -1,7 +1,7 @@
 package com.example.cocoin.service.mattermost.database;
 
 import com.zaxxer.hikari.HikariDataSource;
-import org.example.database.common.RoutingDataSource;
+import org.example.database.common.datasource.RoutingDataSource;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;

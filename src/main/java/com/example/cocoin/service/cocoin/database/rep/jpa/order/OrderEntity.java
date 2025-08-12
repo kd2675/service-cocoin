@@ -7,8 +7,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.example.database.auth.database.rep.jpa.user.UserEntity;
-import org.example.database.common.rep.jpa.CommonDateEntity;
+import org.example.database.database.auth.entity.UserEntity;
+import org.example.database.common.jpa.CommonDateEntity;
 
 @Getter
 @Builder

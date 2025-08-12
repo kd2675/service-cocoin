@@ -13,7 +13,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.core.response.base.exception.GeneralException;
 import org.example.core.response.base.vo.Code;
-import org.example.database.auth.database.rep.jpa.user.UserEntity;
+import org.example.database.database.auth.entity.UserEntity;
 import org.example.log.annotation.LogOrder;
 import org.example.log.annotation.Timer;
 import org.springframework.stereotype.Service;

@@ -2,7 +2,6 @@ package com.example.cocoin.service.cocoin.api.act;
 
 import com.example.cocoin.service.cocoin.api.biz.OrderService;
 import com.example.cocoin.service.cocoin.api.dto.DelOrderDTO;
-import com.example.cocoin.service.cocoin.api.dto.InsMarketDTO;
 import com.example.cocoin.service.cocoin.api.dto.InsOrderDTO;
 import com.example.cocoin.service.cocoin.database.rep.jpa.order.OrderDTO;
 import com.example.cocoin.utils.BithumbApiUtil;
@@ -12,8 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.example.core.response.base.dto.ResponseDTO;
 import org.example.core.response.base.dto.ResponseDataDTO;
 import org.example.core.response.base.vo.Code;
-import org.example.database.auth.database.rep.jpa.user.UserEntity;
-import org.example.log.annotation.Log;
+import org.example.database.database.auth.entity.UserEntity;
 import org.example.log.annotation.Timer;
 import org.springframework.web.bind.annotation.*;
 
